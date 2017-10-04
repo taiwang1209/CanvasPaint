@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+ <html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5 Canvas塗鴉板</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/canvas.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+</head>
+<body>
+<p id="demo"></p>
+    <div class="container">
+        <h1>Canvas塗鴉板</h1>
+        <div class="ccle">
+            <div class="well">
+                <!-- value R -->
+                <h2>
+                    <span class="label label-danger" id="R">R</span>
+                    <input type="range" id="inputR" min="0" max="255" value="0" oninput="outputR.value = inputR.value" onchange="showR(this.value);show();">
+                </h2>
+                
+                <!-- value G -->
+                <h2>
+                    <span class="label label-success" id="G">G</span>
+                    <input type="range" id="inputG" min="0" max="255" value="0" oninput="outputG.value = inputG.value" onchange="showG(this.value);show();">
+                </h2>
+
+                <!-- value B -->
+                <h2>
+                    <span class="label label-primary" id="B">B</span>
+                    <input type="range" id="inputB" min="0" max="255" value="0" oninput="outputB.value = inputB.value" onchange="showB(this.value);show();">
+                </h2>
+    
+                <h3>
+                    RGB ( <output id="outputR">0</output> ,
+                          <output id="outputG">0</output> , 
+                          <output id="outputB">0</output> )
+                          <input type="hidden"  id="showR" value=""/>
+                          <input type="hidden"  id="showG" value=""/>
+                          <input type="hidden"  id="showB" value=""/>
+                </h3>
+            </div>
+            <div class="well">
+                <div id="palette">
+                    <div id="red" class="swatch"></div>
+                    <div id="orange" class="swatch"></div>
+                    <div id="yellow" class="swatch"></div>
+                    <div id="green" class="swatch"></div>
+                    <div id="blue" class="swatch"></div>
+                    <div id="purple" class="swatch"></div>
+                    <div id="black" class="swatch"></div>
+                    <div id="white" class="swatch"></div>
+                </div>
+                <span class="label label-info">筆刷粗度</span>
+                <div class="btn-group">
+                    
+                    <button type="button" id="btnPlus" class="btn btn-success">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" class="btn btn-default" disabled="disabled"><span id="rad">5</span></button>
+                    <button type="button" id="btnMinus" class="btn btn-danger">
+                        <i class="fa fa-minus" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <span class="label label-info">RGB的顏色</span>
+                <div id="nowcolor" class="nowcolor">
+                    <div id="nowRGB"></div>
+                </div>
+                
+            </div>
+        </div>
+        <canvas width= "600" height= "350" style="display:block;" id="myCanvas">你的瀏覽器不支援Canvas</canvas>
+    </div>
+    <center>
+        <button type="button" class="btn btn-large btn-danger" id="clear" onclick="clearctx();">清除畫布</button>
+        <button type="button" class="btn btn-large btn-primary" id="dlpng"><a id="download" download="download" onclick="this.href=canvas.toDataURL('jpg');">下載作品</a></button>
+    </center>
+</body>
+    <script src="js/canvas.js"></script>
+    <script src="js/color.js"></script>
+</html>
